@@ -1,0 +1,337 @@
+@import url("https://fonts.googleapis.com/css2?family=Epilogue:wght@500;700&display=swap");
+
+
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+:root{
+    --white: hsl(0, 0%, 98%);
+    --gray: hsl(0, 0%, 41%);
+    --black: hsl(0, 0%, 8%);
+}
+ul{
+    list-style-type: none;
+}
+nav a{
+    color: var(--gray);
+    text-decoration: none;
+}
+body{
+    min-height: 100vh;
+    color: var(--gray);
+    font-size: 16px;
+    font-weight: 500;
+    font-family: 'Epilogue', sans-serif;
+    text-align: center;
+    line-height: 1.3;
+    position: relative;
+}
+body .overlay{
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    background-color: hsla(0, 0%, 8%, 0.5);
+    transition: all .3s linear;
+}
+body.nav-open .overlay{
+    display: initial;
+    opacity: 1;
+}
+
+header{
+    min-height: 75px;
+    padding: 20px 16px;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+header .menu{
+    position: fixed;
+    top: 20px;
+    right: 16px;
+    z-index: 2;
+    cursor: pointer;
+}
+.menu .close-menu{
+    display: none;
+}
+header.open .open-menu{
+    display: none;
+}
+header.open .close-menu{
+    display: initial;
+}
+
+
+nav{
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 65vw;
+    height: 100vh;
+    background: white;
+    transform: translateX(100%);
+    transition: all .3s ease-in;
+    display: flex;
+    text-align: left;
+    z-index: 1;
+}
+header.open nav{
+    transform: translateX(0%);
+}
+nav .nav-links{
+    margin-top: 75px;
+    flex: 1;
+}
+.nav-links .nav-link{
+    cursor: pointer;
+    position: relative;
+}
+.nav-link > a{
+    width: 100%;
+    padding: 8px 20px;
+    display: block;
+    transition: all .3s ease-in;
+}
+.nav-link > a:hover{
+    background: hsla(0, 0%, 88%, 0.5);
+}
+.nav-link .dropdown-list{
+    display: none;
+    padding: 8px 20px;
+    overflow-y: hidden;
+}
+.nav-link.link-open .dropdown-list{
+    display: block;
+}
+.dropdown-list .dropdown-link a{
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 8px 20px;
+}
+.dropdown-link a:hover{
+    background: hsla(0, 0%, 78%,.5);
+}
+.nav-link a span{
+    margin-right: 12px;
+}
+.nav-link .arrow-up{
+    display: none;
+}
+.nav-link.link-open .arrow-up{
+    display: initial;
+}
+.nav-link.link-open .arrow-down{
+    display: none;
+}
+nav .registration{
+    display: none;
+}
+
+
+main{
+    display: grid;
+    grid-template-rows: auto auto;
+    gap: 20px;
+}
+main picture img{
+    width: 100%;
+}
+main .text-content{
+    padding: 16px;
+}
+.text-content h1{
+    color: var(--black);
+    font-size: 35px;
+    margin-bottom: 16px;
+}
+.text-content button{
+    color: var(--white);
+    background: var(--black);
+    font-size: .9rem;
+    font-weight: 700;
+    padding: .8rem 1.6rem;
+    margin: 20px 0;
+    border: 1px solid var(--black);
+    border-radius: 16px;
+    cursor: pointer;
+    transition: .5s all linear;
+}
+.text-content button:hover{
+    color: var(--black);
+    background: transparent;
+}
+.text-content .clients{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin: 20px 0;
+}
+.clients img{
+    max-width: 69px;
+}
+footer{
+    font-size: 12px;
+    margin-bottom: 16px;
+}
+footer a{
+    color: var(--gray);
+}
+footer a:hover{
+    color: var(--black);
+    text-decoration: none;
+}
+
+@media(min-width:375px){
+    body{
+        background: var(--white);
+    }
+    body .overlay{
+        display: none;
+        opacity: 0;
+    }
+    header{
+        padding: 20px 48px;
+        justify-content: center;
+    }
+    header .logo{
+        margin-top: 8px;
+    }
+    header .menu{
+        display: none;
+    }
+    nav{
+        position: initial;
+        max-width: 80vw;
+        height: auto;
+        background: transparent;
+        margin: 0 32px;
+        flex: 3;
+        align-items: center;
+        transform: translate(0%);
+    }
+    nav .nav-links{
+        display: flex;
+        flex: 3;
+        margin-top: 0;
+    }
+    .nav-link{
+        text-align: right;
+        margin: 0 16px;
+    }
+    .nav-links .nav-link:first-child{
+        font-weight: 700;
+    }
+    .nav-link > a{
+        padding: 0;
+    }
+    .nav-link > a:hover{
+        color: var(--black);
+        background: transparent;
+        transform: translateY(-1px);
+    }
+    .nav-link > a:active{
+        transform: scale(1.2);
+    }
+    .nav-link a span{
+        margin-right: 8px;
+    }
+    .nav-link .dropdown-list{
+        position: absolute;
+        top: calc(100% + 16px);
+        right: 0;
+        width: max-content;
+        background-color: white;
+        box-shadow: 0 16px 16px 0 rgba(0, 0, 0, 0.2);
+        padding: 16px 0;
+        border-radius: 8px;
+    }
+    nav .registration{
+        display: flex;
+        justify-content: flex-end;
+        flex: 1;
+    }
+    .registration button{
+        color: var(--gray);
+        background: transparent;
+        font-size: 14px;
+        font-weight: 700;
+        padding: 8px 16px;
+        margin: 0 8px;
+        border: .16px solid var(--gray);
+        border-radius: 16px;
+        cursor: pointer;
+        transition: all .3s ease-in;
+    }
+    .registration button:hover{
+        color: var(--black);
+        border: .16px solid var(--black);
+        transform: translateY(-1px);
+    }
+    .registration button:active{
+        transform: scale(1.2);
+    }
+    .registration button:first-child{
+        border: none;
+    }
+    main{
+        max-width:1200px;
+        grid-template-columns: 1fr minmax(auto,250px);
+        grid-template-rows: 1fr;
+        gap: 48px;
+        margin: 80px 160px;
+        font-size: 18px;
+        text-align: left;
+        line-height: 1.5;
+    }
+    main picture{
+        order: 2;
+    }
+    main .text-content{
+        order: 1;
+    }
+    .text-content h1{
+        font-size: 16px;
+        line-height: normal;
+        margin-bottom: 28px;
+    }
+    .text-content button{
+        font-size: 18px;
+        padding: 16px 2rem;
+        margin: 28px 0 5rem 0;
+        transition: all .3s linear;
+    }
+    .text-content button:active{
+        transform: scale(1.1);
+    }
+    .clients img{
+        max-width: 100px;
+        cursor: text;
+    }
+}
+@media(min-width:1440px){
+    .nav-link{
+        margin: 0 20px;
+    }
+    .registration button{
+        padding: 12px 24px;
+    }
+    main{
+        grid-template-columns: 1fr minmax(auto,450px);
+        align-items: flex-end;
+        gap: 160px;
+    }
+    .text-content h1{
+        font-size: 48px;
+    }
+}
